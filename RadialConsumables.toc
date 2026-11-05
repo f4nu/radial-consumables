@@ -3,7 +3,7 @@
 ## Notes: A mouse ring for food, drink, potions, bandages and other consumables, filled from your bags.
 ## Author: Fanu
 ## Version: @project-version@
-## IconTexture: InterfaceAddOnsRadialConsumablesMediaicon
+## IconTexture: Interface\AddOns\RadialConsumables\Media\icon
 ## SavedVariables: RadialConsumablesDB
 
 Data.lua
