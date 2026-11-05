@@ -4,6 +4,7 @@
 ## Author: Fanu
 ## Version: @project-version@
 ## IconTexture: Interface\AddOns\RadialConsumables\Media\icon
+## X-Curse-Project-ID: 1785198
 ## SavedVariables: RadialConsumablesDB
 
 Data.lua
