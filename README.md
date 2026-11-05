@@ -1,3 +1,5 @@
+<img src="art/icon-400.png" width="96" align="right">
+
 # Radial Consumables
 
 **Your food, drink and potions in a ring at the mouse.**

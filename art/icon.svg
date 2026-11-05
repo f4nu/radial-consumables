@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bezel" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#f3d590"/>
+      <stop offset="0.3" stop-color="#b98a3e"/>
+      <stop offset="0.7" stop-color="#6e4518"/>
+      <stop offset="1" stop-color="#3a2108"/>
+    </linearGradient>
+    <linearGradient id="bezelIn" x1="0.8" y1="1" x2="0.2" y2="0">
+      <stop offset="0" stop-color="#d9ab5c"/>
+      <stop offset="0.55" stop-color="#7a4c1a"/>
+      <stop offset="1" stop-color="#2e1806"/>
+    </linearGradient>
+    <radialGradient id="field" cx="50%" cy="50%" r="55%">
+      <stop offset="0" stop-color="#6a3c14"/>
+      <stop offset="0.35" stop-color="#2e1808"/>
+      <stop offset="0.7" stop-color="#160b04"/>
+      <stop offset="1" stop-color="#070302"/>
+    </radialGradient>
+    <radialGradient id="ember" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffc45a" stop-opacity="0.75"/>
+      <stop offset="0.4" stop-color="#e8862a" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#c0601a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="track" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3d590"/>
+      <stop offset="0.5" stop-color="#b98a3e"/>
+      <stop offset="1" stop-color="#5a3510"/>
+    </linearGradient>
+    <radialGradient id="pinGold" cx="36%" cy="22%" r="80%">
+      <stop offset="0" stop-color="#fffbe0"/>
+      <stop offset="0.2" stop-color="#ffe066"/>
+      <stop offset="0.55" stop-color="#f2a516"/>
+      <stop offset="1" stop-color="#8a4600"/>
+    </radialGradient>
+
+    <!-- one orb gradient per slot; light from top-left -->
+    <radialGradient id="orbRed" cx="36%" cy="28%" r="78%">
+      <stop offset="0" stop-color="#ffb0a0"/>
+      <stop offset="0.3" stop-color="#f0483c"/>
+      <stop offset="0.75" stop-color="#9c1414"/>
+      <stop offset="1" stop-color="#4a0608"/>
+    </radialGradient>
+    <radialGradient id="orbBlue" cx="36%" cy="28%" r="78%">
+      <stop offset="0" stop-color="#c0ccff"/>
+      <stop offset="0.3" stop-color="#5a72f0"/>
+      <stop offset="0.75" stop-color="#20309c"/>
+      <stop offset="1" stop-color="#0a1048"/>
+    </radialGradient>
+    <radialGradient id="orbCyan" cx="36%" cy="28%" r="78%">
+      <stop offset="0" stop-color="#d8f6ff"/>
+      <stop offset="0.3" stop-color="#48b8ec"/>
+      <stop offset="0.75" stop-color="#1360a0"/>
+      <stop offset="1" stop-color="#072a4c"/>
+    </radialGradient>
+    <radialGradient id="orbAmber" cx="36%" cy="28%" r="78%">
+      <stop offset="0" stop-color="#ffe8b0"/>
+      <stop offset="0.3" stop-color="#f0a83c"/>
+      <stop offset="0.75" stop-color="#9a5210"/>
+      <stop offset="1" stop-color="#4a2206"/>
+    </radialGradient>
+    <radialGradient id="orbCream" cx="36%" cy="28%" r="78%">
+      <stop offset="0" stop-color="#fffdf2"/>
+      <stop offset="0.3" stop-color="#f3e6c4"/>
+      <stop offset="0.75" stop-color="#b08c5a"/>
+      <stop offset="1" stop-color="#5a3f20"/>
+    </radialGradient>
+    <radialGradient id="orbGreen" cx="36%" cy="28%" r="78%">
+      <stop offset="0" stop-color="#d8ffb8"/>
+      <stop offset="0.3" stop-color="#66c843"/>
+      <stop offset="0.75" stop-color="#227018"/>
+      <stop offset="1" stop-color="#0b3008"/>
+    </radialGradient>
+
+    <filter id="blur14" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+    <filter id="blur5" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <clipPath id="inside">
+      <circle cx="256" cy="256" r="214"/>
+    </clipPath>
+    <clipPath id="orbClip">
+      <circle cx="256" cy="256" r="52"/>
+    </clipPath>
+  </defs>
+
+  <!-- bezel, the same antique bronze as Quest Beacon -->
+  <circle cx="256" cy="256" r="251" fill="#1c0e02"/>
+  <circle cx="256" cy="256" r="245" fill="url(#bezel)"/>
+  <circle cx="256" cy="256" r="226" fill="url(#bezelIn)"/>
+  <circle cx="256" cy="256" r="219" fill="#1c0e02"/>
+  <circle cx="256" cy="256" r="214" fill="url(#field)"/>
+
+  <g clip-path="url(#inside)">
+    <!-- hearth glow where the mouse is -->
+    <circle cx="256" cy="256" r="190" fill="url(#ember)"/>
+
+    <!-- the ring the slots sit on -->
+    <circle cx="256" cy="256" r="150" fill="none" stroke="#ffb347" stroke-width="30" opacity="0.35" filter="url(#blur14)"/>
+    <circle cx="256" cy="256" r="150" fill="none" stroke="#1c0e02" stroke-width="18" opacity="0.9"/>
+    <circle cx="256" cy="256" r="150" fill="none" stroke="url(#track)" stroke-width="10"/>
+
+    <!-- seven slots clockwise from twelve: eat and drink, drinks, food,
+         health, mana, first aid, other. Each is rotated into place and
+         back again so the light stays top-left. -->
+
+    <!-- eat and drink: half bread, half water -->
+    <g transform="rotate(0 256 256) translate(0 -150) rotate(0 256 256)">
+      <circle cx="256" cy="256" r="60" fill="#1c0e02"/>
+      <g clip-path="url(#orbClip)">
+        <circle cx="256" cy="256" r="52" fill="url(#orbAmber)"/>
+        <path d="M204 308 L308 204 L308 308 Z" fill="url(#orbCyan)"/>
+        <path d="M204 308 L308 204" stroke="#1c0e02" stroke-width="5"/>
+      </g>
+      <ellipse cx="236" cy="232" rx="14" ry="9" fill="#fff8e0" opacity="0.65" transform="rotate(-35 236 232)"/>
+    </g>
+
+    <!-- drinks -->
+    <g transform="rotate(51.43 256 256) translate(0 -150) rotate(-51.43 256 256)">
+      <circle cx="256" cy="256" r="60" fill="#1c0e02"/>
+      <circle cx="256" cy="256" r="52" fill="url(#orbCyan)"/>
+      <path d="M256 224 C268 242 278 254 278 268 A22 22 0 0 1 234 268 C234 254 244 242 256 224 Z" fill="#fffdf2" opacity="0.88"/>
+      <ellipse cx="236" cy="232" rx="14" ry="9" fill="#fff8e0" opacity="0.65" transform="rotate(-35 236 232)"/>
+    </g>
+
+    <!-- food: a drumstick -->
+    <g transform="rotate(102.86 256 256) translate(0 -150) rotate(-102.86 256 256)">
+      <circle cx="256" cy="256" r="60" fill="#1c0e02"/>
+      <circle cx="256" cy="256" r="52" fill="url(#orbAmber)"/>
+      <g transform="rotate(-40 256 256)">
+        <path d="M258 256 L286 256" stroke="#fffdf2" stroke-width="10" stroke-linecap="round"/>
+        <circle cx="290" cy="248" r="7.5" fill="#fffdf2"/>
+        <circle cx="290" cy="264" r="7.5" fill="#fffdf2"/>
+        <path d="M214 256 C214 230 238 222 252 234 L268 248 L268 264 L252 278 C238 290 214 282 214 256 Z" fill="#b04a1a" stroke="#4a2206" stroke-width="3.5" stroke-linejoin="round"/>
+        <ellipse cx="232" cy="246" rx="10" ry="6" fill="#ee9a58" opacity="0.75" transform="rotate(-20 232 246)"/>
+      </g>
+      <ellipse cx="236" cy="232" rx="14" ry="9" fill="#fff8e0" opacity="0.65" transform="rotate(-35 236 232)"/>
+    </g>
+
+    <!-- health potion -->
+    <g transform="rotate(154.29 256 256) translate(0 -150) rotate(-154.29 256 256)">
+      <circle cx="256" cy="256" r="60" fill="#1c0e02"/>
+      <circle cx="256" cy="256" r="52" fill="url(#orbRed)"/>
+      <path d="M248 228 L264 228 L264 241 C278 248 285 259 285 270 A29 29 0 0 1 227 270 C227 259 234 248 248 241 Z" fill="#fff3c4" opacity="0.88"/>
+      <rect x="245" y="221" width="22" height="9" rx="2" fill="#fff3c4" opacity="0.88"/>
+      <ellipse cx="236" cy="232" rx="14" ry="9" fill="#fff8e0" opacity="0.65" transform="rotate(-35 236 232)"/>
+    </g>
+
+    <!-- mana potion -->
+    <g transform="rotate(205.71 256 256) translate(0 -150) rotate(-205.71 256 256)">
+      <circle cx="256" cy="256" r="60" fill="#1c0e02"/>
+      <circle cx="256" cy="256" r="52" fill="url(#orbBlue)"/>
+      <path d="M248 228 L264 228 L264 241 C278 248 285 259 285 270 A29 29 0 0 1 227 270 C227 259 234 248 248 241 Z" fill="#fff3c4" opacity="0.88"/>
+      <rect x="245" y="221" width="22" height="9" rx="2" fill="#fff3c4" opacity="0.88"/>
+      <ellipse cx="236" cy="232" rx="14" ry="9" fill="#fff8e0" opacity="0.65" transform="rotate(-35 236 232)"/>
+    </g>
+
+    <!-- first aid -->
+    <g transform="rotate(257.14 256 256) translate(0 -150) rotate(-257.14 256 256)">
+      <circle cx="256" cy="256" r="60" fill="#1c0e02"/>
+      <circle cx="256" cy="256" r="52" fill="url(#orbCream)"/>
+      <path d="M247 230 L265 230 L265 247 L282 247 L282 265 L265 265 L265 282 L247 282 L247 265 L230 265 L230 247 L247 247 Z" fill="#b8302a" opacity="0.92"/>
+      <ellipse cx="236" cy="232" rx="14" ry="9" fill="#fff8e0" opacity="0.65" transform="rotate(-35 236 232)"/>
+    </g>
+
+    <!-- other consumables -->
+    <g transform="rotate(308.57 256 256) translate(0 -150) rotate(-308.57 256 256)">
+      <circle cx="256" cy="256" r="60" fill="#1c0e02"/>
+      <circle cx="256" cy="256" r="52" fill="url(#orbGreen)"/>
+      <path d="M256 224 C258 244 263 249 284 256 C263 263 258 268 256 288 C254 268 249 263 228 256 C249 249 254 244 256 224 Z" fill="#fffdf2" opacity="0.92"/>
+      <ellipse cx="236" cy="232" rx="14" ry="9" fill="#fff8e0" opacity="0.65" transform="rotate(-35 236 232)"/>
+    </g>
+
+    <!-- the mouse, in the middle, in its own pool of light -->
+    <circle cx="256" cy="256" r="62" fill="#ffd35a" opacity="0.45" filter="url(#blur14)"/>
+    <g transform="translate(222 206) scale(1.35)">
+      <path d="M0 0 L0 76 L18 60 L30 86 L44 80 L32 55 L56 54 Z" fill="#1c0e02" opacity="0.55" transform="translate(5 7)" filter="url(#blur5)"/>
+      <path d="M0 0 L0 76 L18 60 L30 86 L44 80 L32 55 L56 54 Z" fill="url(#pinGold)" stroke="#1c0e02" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M5 10 L5 48" stroke="#fffbe8" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+    </g>
+  </g>
+</svg>
