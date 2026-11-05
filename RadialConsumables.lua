@@ -13,7 +13,7 @@ local DEFAULT_KEY = "ALT-F"
 local CONSUMABLE = Enum.ItemClass and Enum.ItemClass.Consumable or 0
 
 BINDING_HEADER_RADIALCONSUMABLES = "Radial Consumables"
-_G["BINDING_NAME_" .. ACTION] = "Open at mouse"
+_G["BINDING_NAME_" .. ACTION] = "Open Radial Consumables"
 
 local CATEGORIES = { "drink", "food", "health", "mana", "firstaid", "misc" }
 local LABELS = {
