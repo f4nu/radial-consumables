@@ -6,6 +6,8 @@
 
 A WoW: Forever addon. Press a key, click what you need.
 
+![The ring, food open](screenshots/ring.jpg)
+
 ## Features
 
 - **Opens at the mouse**: Alt+F by default. Kept clear of the screen edges.
