@@ -3,6 +3,7 @@ package-as: RadialConsumables
 ignore:
   - art
   - curseforge
+  - screenshots
   - tools
   - README.md
   - CLAUDE.md
