@@ -1,0 +1,9 @@
+## Interface: 16001
+## Title: Radial Consumables
+## Notes: A mouse ring for food, drink, potions, bandages and other consumables, filled from your bags.
+## Author: Fanu
+## Version: @project-version@
+## SavedVariables: RadialConsumablesDB
+
+Data.lua
+RadialConsumables.lua

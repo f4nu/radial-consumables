@@ -1,0 +1,12 @@
+package-as: RadialConsumables
+
+ignore:
+  - art
+  - curseforge
+  - tools
+  - README.md
+  - CLAUDE.md
+
+manual-changelog:
+  filename: CHANGELOG.md
+  markup-type: markdown
