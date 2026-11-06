@@ -257,19 +257,30 @@ local function newButton(parent, isSlice)
 	hl:SetColorTexture(1, 1, 1, 0.3)
 	circle(b, hl)
 
-	b.extra = b:CreateTexture(nil, "OVERLAY")
+	-- A round swipe over the icon; the badges sit on a layer above it.
+	b.cd = CreateFrame("Cooldown", nil, b, "CooldownFrameTemplate")
+	b.cd:SetAllPoints()
+	b.cd:SetSwipeTexture(MASK_FILE)
+	b.cd:SetUseCircularEdge(true)
+	b.cd:SetDrawEdge(false)
+	b.cd:SetDrawBling(false)
+	local top = CreateFrame("Frame", nil, b)
+	top:SetAllPoints()
+	top:SetFrameLevel(b.cd:GetFrameLevel() + 1)
+
+	b.extra = top:CreateTexture(nil, "OVERLAY")
 	b.extra:SetSize(SIZE * 0.55, SIZE * 0.55)
 	b.extra:SetTexCoord(0.08, 0.92, 0.08, 0.92)
 	b.extra:SetPoint("CENTER", b, "TOPRIGHT", -4, -4)
 	circle(b, b.extra)
 
-	b.buff = b:CreateTexture(nil, "OVERLAY", nil, 2)
+	b.buff = top:CreateTexture(nil, "OVERLAY", nil, 2)
 	b.buff:SetAtlas("bags-greenarrow")
 	b.buff:SetSize(SIZE * 0.4, SIZE * 0.4)
 	b.buff:SetPoint("CENTER", b, "TOPLEFT", 5, -5)
 	b.buff:Hide()
 
-	b.count = b:CreateFontString(nil, "OVERLAY", "NumberFontNormal")
+	b.count = top:CreateFontString(nil, "OVERLAY", "NumberFontNormal")
 	b.count:SetPoint("BOTTOMRIGHT", 2, -2)
 
 	header:WrapScript(b, "OnClick", USE_PRE, USE_POST)
@@ -290,6 +301,17 @@ local function updateCount(b)
 	b.icon:SetDesaturated(n == 0)
 end
 
+-- A combo shows whichever of its two items comes back later.
+local function updateCooldown(b)
+	local start, duration = 0, 0
+	local ids = b.combo and { b.foodID or b.drinkID, b.drinkID } or { b.itemID }
+	for _, id in ipairs(ids) do
+		local s, d, on = C_Item.GetItemCooldown(id)
+		if on and s and d and d > 0 and s + d > start + duration then start, duration = s, d end
+	end
+	b.cd:SetCooldown(start, duration)
+end
+
 local function setItem(b, id)
 	b.itemID, b.combo, b.foodID, b.drinkID = id, nil, nil, nil
 	b.icon:SetTexture(C_Item.GetItemIconByID(id))
@@ -298,6 +320,7 @@ local function setItem(b, id)
 	b:SetAttribute("type", "item")
 	b:SetAttribute("item", "item:" .. id)
 	updateCount(b)
+	updateCooldown(b)
 end
 
 local function setCombo(b, foodID, drinkID)
@@ -317,6 +340,7 @@ local function setCombo(b, foodID, drinkID)
 	b:SetAttribute("type", "macro")
 	b:SetAttribute("macrotext", table.concat(lines, "\n"))
 	updateCount(b)
+	updateCooldown(b)
 end
 
 local rootButtons = {}
@@ -536,6 +560,7 @@ events:RegisterEvent("PLAYER_LEVEL_UP")
 events:RegisterEvent("PLAYER_REGEN_ENABLED")
 events:RegisterEvent("GET_ITEM_INFO_RECEIVED")
 events:RegisterEvent("SPELL_DATA_LOAD_RESULT")
+events:RegisterEvent("BAG_UPDATE_COOLDOWN")
 events:SetScript("OnEvent", function(_, event)
 	if event == "PLAYER_LOGIN" then
 		RadialConsumablesDB = RadialConsumablesDB or {}
@@ -555,6 +580,10 @@ events:SetScript("OnEvent", function(_, event)
 	elseif event == "BAG_UPDATE_DELAYED" then
 		for _, b in ipairs(allButtons) do updateCount(b) end
 		queueRebuild()
+	elseif event == "BAG_UPDATE_COOLDOWN" then
+		for _, b in ipairs(allButtons) do
+			if b.itemID then updateCooldown(b) end
+		end
 	elseif event == "PLAYER_REGEN_ENABLED" then
 		if dirty then queueRebuild() end
 	elseif event == "GET_ITEM_INFO_RECEIVED" or event == "SPELL_DATA_LOAD_RESULT" then

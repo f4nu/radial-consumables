@@ -1,3 +1,3 @@
-# 1.0.0
+# 1.1.0
 
-- First release.
+- Items in the wheel show their cooldown.
