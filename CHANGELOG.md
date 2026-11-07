@@ -1,3 +1,3 @@
-# 1.1.0
+# 1.1.1
 
-- Items in the wheel show their cooldown.
+- New icon.
