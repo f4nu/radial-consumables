@@ -4,7 +4,7 @@ from PIL import Image
 from playwright.sync_api import sync_playwright
 
 here = pathlib.Path(__file__).resolve().parent
-svg = (here / "icon.svg").read_text()
+svg = (here / "icon.svg").read_text(encoding="utf-8")
 
 
 def render(browser, size):
